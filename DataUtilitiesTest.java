@@ -245,32 +245,7 @@ public class DataUtilitiesTest extends DataUtilities {
 
 	    
 	    
-		/*
-		 * this test case test for the correct output of non numerical values in the column being added
-		 */	
-//	    @Test(expected = InvalidParameterException.class)
-//	    public void calculateColumnTotal_nonNumericValues() {
-//	        // setup
-//	        mockingContext.checking(new Expectations() {
-//	            {
-//	                one(values).getRowCount();
-//	                will(returnValue(3));
-//	                one(values).getValue(0, 0);
-//	                will(returnValue(null)); // Non-numeric value
-//	                one(values).getValue(1, 0);
-//	                will(returnValue(null));
-//	                one(values).getValue(2, 0);
-//	                will(returnValue(null)); // Non-numeric value
-//	            }
-//	        });
-//	        // exercise
-//	        DataUtilities.calculateColumnTotal(values, 0);
-//	        // verify
-//
-//	        // Sum of numeric values
-//	        // tear-down: NONE in this test method
-//	    }
-
+		
 	    
 // ------------------------------------------------------------------------------------------------
 	   
@@ -314,6 +289,18 @@ public class DataUtilitiesTest extends DataUtilities {
 		     });
 		     double result = DataUtilities.calculateRowTotal(values, 0);
 		     assertEquals("Unexpected result for calculateRowTotal", 10.0, result, .000000001d);
+		 }
+		 
+		 @Test
+		 public void calculateRowTotalForEmpty() {
+		     mockingContext.checking(new Expectations() {
+		         {
+		             one(values).getColumnCount();
+		             will(returnValue(0));
+		         }
+		     });
+		     double result = DataUtilities.calculateRowTotal(values, 0);
+		     assertEquals("Unexpected result for calculateRowTotal", 0, result, .000000001d);
 		 }
 		 
 		 /*
@@ -372,20 +359,6 @@ public class DataUtilitiesTest extends DataUtilities {
 			 */	 
 
 
-//		 @Test
-//		 public void calculateRowTotalWithOutofBoundsIndex() {
-//		     mockingContext.checking(new Expectations() {
-//		         {
-//		             one(values).getColumnCount();
-//		             will(returnValue(2));
-//		             one(values).getValue(0, 0);
-//		             will(returnValue(3.4));
-//		         }
-//		     });
-//		     double result = DataUtilities.calculateRowTotal(values, 5);
-//		     assertEquals("Expected result to be 0 for invalid row index", 0.0, result, .000000001d);
-//		 }
-	
 		    
 // ------------------------------------------------------------------------------------------------
 
@@ -707,20 +680,6 @@ public class DataUtilitiesTest extends DataUtilities {
 	        assertEquals(1.0, (Double) result.getValue("3"), 0.0000001d);
 	    }
 	    
-	    
-//	    /*
-//		 * this test case test for the correct output if invalid parameters are used
-//		 */	
-//	    @Test(expected = InvalidParameterException.class)
-//	    public void getCumulativePercentages_nullData() {
-//	        mockingContexts.checking(new Expectations() {
-//	            {
-//	                allowing(keyedValues).getItemCount();
-//	                will(returnValue(0));
-//	            }
-//	        });
-//	        KeyedValues result = DataUtilities.getCumulativePercentages(null);
-//	    }
 	    
 	    	    
 }

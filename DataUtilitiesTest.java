@@ -281,6 +281,7 @@ public class DataUtilitiesTest extends DataUtilities {
 	    /*
 		 * The test case checks the row total for only one value
 		 */	 
+	    
 		 @Test
 		 public void calculateRowTotalForOneValue() {
 		     mockingContext.checking(new Expectations() {
@@ -404,8 +405,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		 // test for creating number array with an empty double array
 		 @Test
 		 public void createNumberArrayEmpty() {
-		     double[][] data2D = new double[0][0]; // Empty 2D array
-		     Number[][] result = DataUtilities.createNumberArray2D(data2D);
+			 data = new double[0]; // Empty 2D array
+		     Number[] result = DataUtilities.createNumberArray(data);
 		     assertEquals("Expected an empty array", 0, result.length);
 		 }
 		 
